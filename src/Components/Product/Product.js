@@ -1,38 +1,27 @@
-import React from 'react'
+import React from "react";
+import "../../styles/styles.css";
 
+function Product(props) {
+  let { id, img_url, name, price } = props.product;
 
-
-function Product(props){
-    let {id, img_url, name, price} = props.product
-
-           
-        
-       
-
-
-    return ( 
-        <div className = 'product-list'  >
-            <div className= 'product-box' key= {id}>
-                <img className='product-image' alt={name} src={img_url}/>
-                <h2 id='product-name'>{name}</h2>
-                <h2 id='product-price'>{price}</h2>             
-                <div className = 'product-buttons'>
-                <button onClick={()=>props.deleteProduct(id)}>Delete</button>
-                <button onClick={()=>props.editProduct(id)}>Edit</button>
-                </div>
-            </div>
-        </div>        
-           
-        
-    )
-    
+  return (
+    <div className="product-list">
+      <img className="product-image" alt={name} src={img_url} />
+      <div className='product-text'>
+        <h2 id="product-name">{name}</h2>
+        <h2 id="product-price">{price}</h2>
+      </div>
+      {/* <div className="product-buttons">
+          <button onClick={() => props.deleteProduct(id)}>Delete</button>
+          <button onClick={() => props.editProduct(id)}>Edit</button>
+        </div> */}
+    </div>
+  );
 }
 
-export default Product
+export default Product;
 
-
-
-//*IF I NEED TO MAP INVENTORY WHICH ORIGINALLY COMES FROM APP, THROUGH DASHBOARD BUT I ALREADY DID IT IN DASHBOARD SO NO NEED 
+//*IF I NEED TO MAP INVENTORY WHICH ORIGINALLY COMES FROM APP, THROUGH DASHBOARD BUT I ALREADY DID IT IN DASHBOARD SO NO NEED
 
 // function Product(props){
 //     let product = props.inventory.map((product)=>{
@@ -47,15 +36,14 @@ export default Product
 //             </div>
 //         </div>
 //         )
-        
-//     })     
 
+//     })
 
-//     return (             
-//         <div className = 'product-box'>            
+//     return (
+//         <div className = 'product-box'>
 //             {product}
-//         </div>          
-        
+//         </div>
+
 //     )
-    
+
 // }

@@ -1,100 +1,83 @@
-import React, {Component} from 'react'
-import axios from 'axios'
-import './reset.css'
-import './App.css';
+import React, { Component } from "react";
+import axios from "axios";
+import "./reset.css";
+import "./App.css";
+import "./styles/styles.css";
 
+import Dashboard from "./Components/Dahboard/Dashboard";
+import Form from "./Components/Form/Form";
+import Header from "./Components/Header/Header";
 
-import Dashboard from './Components/Dahboard/Dashboard'
-import Form from './Components/Form/Form'
-import Header from './Components/Header/Header'
-
-class App extends Component{
-  constructor(){
-    super()
-    this.state ={
-      inventory:[],
-      currentProduct:{}
-     
-    }
-  }
-  
-
-
-
-  componentDidMount=()=>{
-    this.getAllProducts()
-  
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      inventory: [],
+      currentProduct: {},
+    };
   }
 
-  getAllProducts = ()=>{
-    axios.get('api/inventory')
-    .then(res => {
-      this.setState({
-        inventory: res.data
+  componentDidMount = () => {
+    this.getAllProducts();
+  };
+
+  getAllProducts = () => {
+    axios
+      .get("api/inventory")
+      .then((res) => {
+        this.setState({
+          inventory: res.data,
+        });
       })
-    }).catch(err=> console.log(err))
-  
+      .catch((err) => console.log(err));
+  };
 
-  }
-
-  
-
-  
-
-  editCurrentProduct =(product) => {
+  editCurrentProduct = (product) => {
     this.setState({
-      currentProduct: product
-    })
-  }
+      currentProduct: product,
+    });
+  };
 
+  //  deleteProduct = () =>{
+  //     const {id} = this.state.inventory
+  //     axios.delete(`api/inventory/?id=${id}`)
+  //     .then(res=> {
+  //         this.setState({
+  //           inventory: res.data
+  //         })
+  //     }).catch(err=> console.log(err))
 
+  // }
 
-
-
-
-
-//  deleteProduct = () =>{
-//     const {id} = this.state.inventory
-//     axios.delete(`api/inventory/?id=${id}`)
-//     .then(res=> {
-//         this.setState({
-//           inventory: res.data
-//         })
-//     }).catch(err=> console.log(err))
-
-// }
-
-
- 
-
-  render(){    
+  render() {
     return (
-      <div> 
-      <Header/> 
-      <Dashboard inventory = {this.state.inventory}
-                 deleteProduct={this.deleteProduct} 
-                 getAllProducts = {this.getAllProducts} 
-                 editCurrentProduct={this.editCurrentProduct}/>
-      <Form  currentProduct={this.state.currentProduct} 
-             getAllProducts= {this.getAllProducts} 
-             editCurrentProduct={this.editCurrentProduct}/>
+      <div >
+        <Header />
+        <div className="components-container">
+          <Dashboard
+            inventory={this.state.inventory}
+            deleteProduct={this.deleteProduct}
+            getAllProducts={this.getAllProducts}
+            editCurrentProduct={this.editCurrentProduct}
+          />
+          <Form
+            currentProduct={this.state.currentProduct}
+            getAllProducts={this.getAllProducts}
+            editCurrentProduct={this.editCurrentProduct}
+          />
+        </div>
       </div>
-     
-      
-    )
-
+    );
   }
-  
 }
 
 export default App;
 
-
-
-
-{/* <div> 
+{
+  /* <div> 
         <Header/> 
         <Dashboard editCurrentProduct={this.editCurrentProduct}/>
         <Form  product={this.state.currentProduct} 
                editCurrentProduct={this.editCurrentProduct}/>
-      </div> */}
+      </div> */
+}

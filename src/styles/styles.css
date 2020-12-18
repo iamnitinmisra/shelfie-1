@@ -1,0 +1,75 @@
+@font-face {
+    font-family: openSans;
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+}
+
+* {
+    text-decoration: none;
+}
+
+h1 {
+    color: white;
+    margin: 0 30px 0 30px; 
+    font-family: openSans;
+}
+
+.components-container {
+    display: flex;
+}
+
+.header-container {
+background-color: #AB2A19;
+display: flex;
+height: 60px;
+align-items: center;
+
+}
+
+.header-buttons-container {
+    display: flex;
+}
+
+.navigation-button {
+    background-color: #ED6B5A;
+    height: 30px;
+    width: 120px;
+    color: black;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 5px;
+    margin: 0 30px 0 0
+}
+
+.product-image {
+    max-width: 500px;
+    max-height: 300px;
+}
+
+.product-list {
+    height: 350px;
+    width: 700px;
+    margin: 20px 0 20px 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #D34735
+    
+}
+
+.product-text {
+    position: relative;
+    bottom: 110px;
+}
+
+.form-box {
+    margin: 20px 0 0 60px;
+    background-color: #3AD886;
+    width: 550px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
