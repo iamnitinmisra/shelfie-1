@@ -8,7 +8,7 @@ CREATE TABLE product(
 );
 
 INSERT INTO product 
-(name, image_url, price)
+(name, img_url, price)
 VALUES
 ('shoes','https://get.pxhere.com/photo/shoe-leather-photography-glass-boot-leg-black-shoe-lace-close-up-footwear-macro-photography-55674.jpg' , 800.56),
 ('pants','https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-691910437-1-1551118905.jpg?crop=1.00xw:1.00xh;0,0&resize=980:*' ,56.45),

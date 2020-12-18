@@ -12,10 +12,10 @@ const app = express()
 app.use(express.json())
 
 app.get('/api/inventory', ctrl.getAllProducts)
-// app.get('/api/inventory/:id', ctrl.getOneProduct)
+app.get('/api/product/:id', ctrl.getOneProduct)
 app.post('/api/product', ctrl.addProduct)
-// app.put('/api/inventory/:id', ctrl.updateProduct)
-// app.delete('/api/inventory/:id', ctrl.deleteProduct)
+app.put('/api/inventory/:id', ctrl.updateProduct)
+app.delete('/api/inventory/:id', ctrl.deleteProduct)
 
 massive({
     connectionString: CONNECTION_STRING,
