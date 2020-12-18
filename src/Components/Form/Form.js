@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {withRouter} from 'react-router-dom'
 import "../../styles/styles.css";
 
 class Form extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       id: null,
       name: "",
@@ -13,44 +14,20 @@ class Form extends Component {
     };
   }
 
-  // componentDidUpdate(oldProps){
-  //     console.log(oldProps)
-  //     let {id, name,img_url, price} = this.props.product
-  //     if(oldProps.product.id !== id){
-  //         this.setState({
-  //             id,
-  //             name,
-  //             img_url,
-  //             price,
-  //             edit:true
-  //         })
-  //     }
-  // }
+//   componentDidUpdate(oldProps){
+//       console.log(oldProps)
+//       let {id, name,img_url, price} = this.props.product
+//       if(oldProps.product === id){
+//           this.setState({
+//               id,
+//               name,
+//               img_url,
+//               price,
+//               edit:true
+//           })
+//       }
+//   }
 
-  // componentDidUpdate(oldProps){
-  //     axios.get('api/inventory')
-  //     .then(res => {
-  //       this.setState({
-  //         name:res.data,
-  //         img_url:res.data,
-  //         price:res.data
-  //       })
-  //     }).catch(err=> console.log(err))
-
-  //   }
-  // let {id,name, price, img_url} = this.props.inventory
-
-  // getOneProduct = () => {
-  //     let {id, name, price, img_url} = this.state
-  //     axios.get(`api/product/:id=${id}`)
-  //     then(res=> {
-  //         this.setState({
-  //             name: res.data.name,
-  //             img_url: res.data.img_url,
-  //             price: res.data.price
-  //         })
-  //     }).catch(err=> console.log(err))
-  // }
 
   addToInventory = () => {
     const { name, price, img_url } = this.state;
@@ -76,7 +53,7 @@ class Form extends Component {
   editProduct = () => {
     const { id, name, price, img_url } = this.state;
     axios
-      .put(`api/inventory/:id=${id}`, { name, price, img_url })
+      .put(`api/inventory/${id}`, { name, price, img_url })
       .then((res) => {
         this.setState({
           name: res.data.name,
@@ -106,7 +83,7 @@ class Form extends Component {
 
   render() {
     const { id, name, img_url, price } = this.state;
-    const { product } = this.props;
+    // const { product } = this.props;
     return (
       <div className="form-box">
         <div>
@@ -128,7 +105,7 @@ class Form extends Component {
         <div className="form-inputs">
           <h2>Image URL: </h2>
           <input
-            name="imageUrl"
+            name="img_url"
             type="text"
             placeholder="http://... "
             value={img_url}
@@ -167,4 +144,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default withRouter(Form);

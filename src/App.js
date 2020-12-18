@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom'
 import axios from "axios";
 import "./reset.css";
 import "./App.css";
@@ -32,22 +33,20 @@ class App extends Component {
       .catch((err) => console.log(err));
   };
 
+  deleteProduct = (id) => {
+    axios
+      .delete(`api/inventory/${id}`)
+      .then(() => {
+        this.getAllProducts()
+      })
+      .catch((err) => console.log(err));
+  };
+
   editCurrentProduct = (product) => {
     this.setState({
       currentProduct: product,
     });
   };
-
-  //  deleteProduct = () =>{
-  //     const {id} = this.state.inventory
-  //     axios.delete(`api/inventory/?id=${id}`)
-  //     .then(res=> {
-  //         this.setState({
-  //           inventory: res.data
-  //         })
-  //     }).catch(err=> console.log(err))
-
-  // }
 
   render() {
     return (
@@ -71,13 +70,6 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
 
-{
-  /* <div> 
-        <Header/> 
-        <Dashboard editCurrentProduct={this.editCurrentProduct}/>
-        <Form  product={this.state.currentProduct} 
-               editCurrentProduct={this.editCurrentProduct}/>
-      </div> */
-}
+

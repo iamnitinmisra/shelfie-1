@@ -28,9 +28,10 @@ module.exports = {
     },
     addProduct: (req, res) => {
         const dbInstance = req.app.get('db')
-        const {name, image_url, price} = req.body
-        
-        dbInstance.add_product([name, image_url, price])
+        const {name, img_url, price} = req.body
+        console.log(req.body)
+
+        dbInstance.add_product([name, img_url, price])
         .then(product=> {
             res.status(200).send(product) 
         })
@@ -44,7 +45,6 @@ module.exports = {
         const dbInstance = req.app.get('db')
         const {id} = req.params
         const {name, image_url, price} = req.body
-
         dbInstance.update_product([id, name, image_url, price])
         .then(product=> {
             res.status(200).send(product)

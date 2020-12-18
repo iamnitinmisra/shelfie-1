@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 import "../../styles/styles.css";
 
 function Product(props) {
@@ -6,20 +7,36 @@ function Product(props) {
 
   return (
     <div className="product-list">
+      {console.log(props)}
       <img className="product-image" alt={name} src={img_url} />
-      <div className='product-text'>
-        <h2 id="product-name">{name}</h2>
-        <h2 id="product-price">{price}</h2>
+      <div className="product-text">
+        <div>
+          <h2 id="product-name">{name}</h2>
+          <h2 id="product-price">{price}</h2>
+        </div>
+        <div className="product-button-container">
+          <input
+            className="product-button"
+            type="button"
+            value="Delete"
+            onClick={() => props.deleteProduct(id)}
+          />
+          <Link to={`/edit/${id}`} >
+            {/* <button className="product-button"><Link to={`/edit/${id}`}>Edit</Link></button> */}
+            <input
+              className="product-button"
+              type="button"
+              value="Edit"
+              // onClick={() => props.editProduct(id)}
+            />
+          </Link>
+        </div>
       </div>
-      {/* <div className="product-buttons">
-          <button onClick={() => props.deleteProduct(id)}>Delete</button>
-          <button onClick={() => props.editProduct(id)}>Edit</button>
-        </div> */}
     </div>
   );
 }
 
-export default Product;
+export default withRouter(Product);
 
 //*IF I NEED TO MAP INVENTORY WHICH ORIGINALLY COMES FROM APP, THROUGH DASHBOARD BUT I ALREADY DID IT IN DASHBOARD SO NO NEED
 
